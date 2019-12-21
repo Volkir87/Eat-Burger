@@ -7,12 +7,22 @@ const path = require("path");
 
 var routes = express.Router();
 
-const model = new Burger();
+const burgerModel = new Burger();
 
-routes.get('/', function(request, response) {
-    let obj = {imageSource: path.join('assets','images','burger.png')};
+routes.get('/', async function(request, response) {
+    let allBurgers = await burgerModel.getAllBurgers();
+    let obj = {imageSource: path.join('assets','images','burger.png'), 
+                burgers: allBurgers};
+                console.log(obj);
     //let obj = {imageSource: './public/assets/images/burger.png'};
     response.render("index", obj); //TBD
+});
+
+routes.post('/api/post', function(request, response) {
+    let body = request.body;
+    //let obj = {imageSource: './public/assets/images/burger.png'};
+    //console.log(body)
+    burgerModel.addBurger(body.name);
 });
 
 module.exports = routes;

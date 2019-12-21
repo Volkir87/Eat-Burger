@@ -7,12 +7,14 @@ class Burger {
         this.orm = new ORM();
     }
 
-    getAllBurgers(){
-        this.orm.selectAll('burgers');
+    async getAllBurgers(){
+        let allBurgers = await this.orm.selectAll('burgers');
+        //console.log(allBurgers);
+        return allBurgers;
     }
 
-    addBurger(){
-
+    addBurger(name){
+        this.orm.insertOne('burgers',`burger_name, devoured`,`'${name}', 0`);
     }
 
     devourBurger(){

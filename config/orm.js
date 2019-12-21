@@ -14,11 +14,14 @@ class ORM {
     }
 
     async selectAll(table){
+        //connection.connect();
         let result = await connection.query(`SELECT * FROM ${table};`);
+        //connection.end();
         return result;
     }
 
     async insertOne(table, fields, values){
+        console.log(`INSERT INTO ${table} (${fields}) values (${values});`);
         await connection.query(`INSERT INTO ${table} (${fields}) values (${values});`);
         return true;
     }
