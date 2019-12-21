@@ -23,3 +23,5 @@ class Burger {
         //won't be used
     }
 }
+
+module.exports = Burger;
