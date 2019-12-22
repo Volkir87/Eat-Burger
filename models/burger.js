@@ -8,7 +8,13 @@ class Burger {
     }
 
     async getAllBurgers(){
-        let allBurgers = await this.orm.selectAll('burgers');
+        let allBurgers = await this.orm.selectAll('burgers','devoured','0');
+        //console.log(allBurgers);
+        return allBurgers;
+    }
+
+    async getAllDevoured(){
+        let allBurgers = await this.orm.selectAll('burgers','devoured','1');
         //console.log(allBurgers);
         return allBurgers;
     }
@@ -17,8 +23,8 @@ class Burger {
         this.orm.insertOne('burgers',`burger_name, devoured`,`'${name}', 0`);
     }
 
-    devourBurger(){
-
+    devourBurger(id){
+        this.orm.updateOne('burgers','devoured','1','id',id);
     }
 
     deleteBurger(){

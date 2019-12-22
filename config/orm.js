@@ -13,9 +13,9 @@ class ORM {
 
     }
 
-    async selectAll(table){
+    async selectAll(table, conditionField, conditionValue){
         //connection.connect();
-        let result = await connection.query(`SELECT * FROM ${table};`);
+        let result = await connection.query(`SELECT * FROM ${table} WHERE ${conditionField} = ${conditionValue};`);
         //connection.end();
         return result;
     }
