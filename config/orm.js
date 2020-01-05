@@ -1,7 +1,7 @@
-
-// Here is the O.R.M. where you write functions that takes inputs and conditions
-// and turns them into database commands like SQL.
-
+/*
+O.R.M. contains methods that take inputs and conditions
+and turn them into SQL database commands.
+*/
 
 const connection = require("./connection");
 const util = require("util");
@@ -21,7 +21,6 @@ class ORM {
     }
 
     async insertOne(table, fields, values){
-        console.log(`INSERT INTO ${table} (${fields}) values (${values});`);
         await connection.query(`INSERT INTO ${table} (${fields}) values (${values});`);
         return true;
     }

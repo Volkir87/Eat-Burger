@@ -1,11 +1,11 @@
-// jquery code goes here
+// Code to add listeners to the buttons on a page and call corresponding api routes
 
 $("#add_button").on('click',function(){
     addBurger();
 })
 
 
-$(".devour").on('click',function(){
+$(".devour").on('click', function(){
     devourBurger($(this));
 })
 
@@ -20,14 +20,14 @@ function addBurger(){
     })
 }
 
-function devourBurger(object){
+async function devourBurger(object){
     let id = object.attr('id');
-    console.log('id = ', id);
     let obj = {id: id};
-    $.ajax({
+    await $.ajax({
         url: 'api/devour',
         method: 'PUT',
         data: obj,
         dataType: 'json'
     })
+    location.reload();
 }

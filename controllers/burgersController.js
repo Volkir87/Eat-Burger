@@ -1,4 +1,4 @@
-// placeholder for controller code
+// Controller code
 
 const Burger = require("../models/burger");
 const express = require("express");
@@ -15,21 +15,18 @@ routes.get('/', async function(request, response) {
     let obj = {imageSource: path.join('assets','images','burger.png'), 
                 burgers: allBurgers,
                 devoured: allDevoured};
-                console.log(obj);
-    //let obj = {imageSource: './public/assets/images/burger.png'};
     response.render("index", obj); //TBD
 });
 
 routes.post('/api/post', function(request, response) {
     let body = request.body;
-    //let obj = {imageSource: './public/assets/images/burger.png'};
-    //console.log(body)
     burgerModel.addBurger(body.name);
 });
 
 routes.put('/api/devour', function(request, response) {
     let body = request.body;
     burgerModel.devourBurger(body.id);
+    response.send("200"); //to avoid error 500
 });
 
 module.exports = routes;

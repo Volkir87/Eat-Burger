@@ -10,7 +10,7 @@
     <div class="col-6 p-5">
         <ul class="list-group">
             {{#each burgers}}
-            <li class="list-group-item d-flex justify-content-between">{{this.id}}. {{this.burger_name}}<button class="btn-primary devour" id={{this.id}}>Devour</button></li>
+            <li class="list-group-item d-flex justify-content-between">{{this.id}}. {{this.burger_name}}<button class="btn btn-primary devour" id={{this.id}}>Devour</button></li>
             {{/each}}
         </ul>
     </div>
@@ -23,11 +23,12 @@
     </div>
 </div>
 <div>
-    <form class="d-flex justify-content-center">
+    <form class="d-flex align-items-center flex-column">
         <div>
             <label>Burger name:</label>
             <input id="name_input">
-            <button id="add_button">Add burger</button>
+            <button id="add_button" class="btn btn-primary">Add burger</button>
         </div>
+        <div><p class="tip">Enter a name of a burger you want to eat and click "Add burger" button</p></div>
     </form>
 </div>

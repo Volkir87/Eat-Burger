@@ -1,4 +1,4 @@
-// your model should do CRUD operations
+// The model does CRUD operations by using ORM
 
 const ORM = require("../config/orm");
 
